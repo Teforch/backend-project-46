@@ -1,7 +1,12 @@
+import { fileURLToPath } from 'url';
+import path, { dirname } from 'path';
 import parseFile from '../src/parseFile.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 test('parseFile', () => {
-  const filepath = '/home/user/lessons/backend-project-46/__fixtures__/file1.json';
+  const fixturePath = path.join(__dirname, '../__fixtures__', 'file1.json');
   const obj = JSON.parse(`{
   "host": "hexlet.io",
   "timeout": 50,
@@ -9,5 +14,5 @@ test('parseFile', () => {
   "follow": false
 }`);
 
-  expect(parseFile(filepath)).toEqual(obj);
+  expect(parseFile(fixturePath)).toEqual(obj);
 });
