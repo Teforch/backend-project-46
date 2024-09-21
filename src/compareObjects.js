@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from 'lodash';
 
 const compareObjects = (obj1, obj2) => {
   const keysObj1 = Object.keys(obj1);
@@ -18,9 +18,9 @@ const compareObjects = (obj1, obj2) => {
     }
     return [`  + ${key}: ${obj2[key]}`];
   });
-  result.unshift(`{`);
-  result.push(`}`);
+  result.unshift('{');
+  result.push('}');
 
-  return result.join("\n");
+  return result.join('\n');
 };
 export default compareObjects;

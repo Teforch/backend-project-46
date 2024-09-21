@@ -1,4 +1,5 @@
-import fs from "node:fs";
+import fs from 'node:fs';
+
 const parseFile = (filePath) => {
   const file = fs.readFileSync(filePath);
 

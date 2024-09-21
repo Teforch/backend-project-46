@@ -1,6 +1,6 @@
-import getAbsoluteFilePath from "./src/getAbsoluteFilePath.js";
-import parseFile from "./src/parseFile.js";
-import compareObjects from "./src/compareObjects.js";
+import getAbsoluteFilePath from './src/getAbsoluteFilePath.js';
+import parseFile from './src/parseFile.js';
+import compareObjects from './src/compareObjects.js';
 
 export default (filepath1, filepath2) => {
   const absoluteFilePath1 = getAbsoluteFilePath(filepath1);
