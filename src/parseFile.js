@@ -1,8 +1,14 @@
 import fs from 'node:fs';
+import yaml from 'js-yaml';
 
-const parseFile = (filePath) => {
+export const parseFileJSON = (filePath) => {
   const file = fs.readFileSync(filePath);
 
   return JSON.parse(file);
 };
-export default parseFile;
+
+export const parseFileYML = (filePath) => {
+  const file = fs.readFileSync(filePath);
+
+  return yaml.load(file);
+};
