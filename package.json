@@ -2,33 +2,24 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "type": "module",
-  "description": "[![Actions Status](https://github.com/ressw/backend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/ressw/backend-project-46/actions)",
-  "main": "index.js",
+  "description": "[![Actions Status](https://github.com/nmanuilova/backend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/nmanuilova/backend-project-46/actions)",
+  "main": "src/index.js",
   "scripts": {
     "test": "npx jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ressw/backend-project-46.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ressw/backend-project-46/issues"
-  },
-  "homepage": "https://github.com/ressw/backend-project-46#readme",
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
-  "dependencies": {
-    "commander": "^11.1.0",
-    "js-yaml": "^4.1.0",
-    "lodash": "^4.17.21"
-  },
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.53.0",
+    "@eslint/js": "^8.57.0",
+    "commander": "^12.1.0",
+    "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.29.0",
-    "jest": "^29.7.0"
+    "eslint-plugin-import": "^2.29.1",
+    "globals": "^15.8.0",
+    "jest": "^29.7.0",
+    "lodash": "^4.17.21"
   }
 }
