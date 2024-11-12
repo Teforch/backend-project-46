@@ -1,62 +1,26 @@
-import fs from 'fs';
 import path from 'path';
-import yaml from 'js-yaml';
-import _ from 'lodash';
+import { readFileSync } from 'fs';
+import parse from './parsers.js';
+import makeAstTree from './makeAstTree.js';
+import makeFormat from './formatters/index.js';
 
-const parsers = { yml: yaml.load, yaml: yaml.load, json: JSON.parse };
+const getPath = (filepath) => path.resolve(process.cwd(), filepath);
+const getAbsPath = (filepath) => readFileSync(getPath(filepath), 'utf8');
+const getExtension = (pathToFile) => path.extname(pathToFile).slice(1);
 
-const parse = (filepath) => {
-  const format = filepath.split('.').at(-1);
-  if (parsers[format] === undefined) {
-    throw new Error(`${format} format is not supported. Supported ${Object.keys(parsers).join(', ')} formats`);
-  }
-  const data = fs.readFileSync(path.resolve(process.cwd(), filepath), 'utf-8');
-  return parsers[format](data);
-};
+const genDiff = (pathToFile1, pathToFile2, format) => {
+  const extension1 = getExtension(pathToFile1);
+  const extension2 = getExtension(pathToFile2);
 
-const build = (key, obj1, obj2) => {
-  if (key in obj1 && key in obj2) {
-    if (obj1[key] !== obj2[key]) {
-      return { key, value: [obj1[key], obj2[key]], type: 'changed' };
-    }
-    return { key, value: [obj1[key]], type: 'unchanged' };
-  } if (key in obj1) {
-    return { key, value: [obj1[key]], type: 'deleted' };
-  }
-  return { key, value: [obj2[key]], type: 'added' };
-};
+  const obj1 = getAbsPath(pathToFile1);
+  const obj2 = getAbsPath(pathToFile2);
 
-const genDiff = (filepath1, filepath2) => {
-  const data1 = parse(filepath1);
-  const data2 = parse(filepath2);
-  const sortedKeys1 = _.sortBy(Object.keys(data1));
-  const sortedKeys2 = _.sortBy(Object.keys(data2));
-  const commonKeys = _.union(sortedKeys1, sortedKeys2);
+  const parsedObj1 = parse(obj1, extension1);
+  const parsedObj2 = parse(obj2, extension2);
 
-  const result = commonKeys
-    .map((key) => build(key, data1, data2))
-    .reduce((acc, item) => {
-      let diff;
-      switch (item.type) {
-        case 'deleted':
-          diff = `${acc} - ${item.key}: ${item.value[0]}\n`;
-          break;
-        case 'added':
-          diff = `${acc} + ${item.key}: ${item.value[0]}\n`;
-          break;
-        case 'changed':
-          diff = `${acc} - ${item.key}: ${item.value[0]}\n + ${item.key}: ${item.value[1]}\n`;
-          break;
-        case 'unchanged':
-          diff = `${acc}   ${item.key}: ${item.value[0]}\n`;
-          break;
-        default:
-          break;
-      }
-      return diff;
-    }, '');
+  const obj = makeAstTree(parsedObj1, parsedObj2);
 
-  return `{\n${result}}`;
+  return makeFormat(obj, format);
 };
 
 export default genDiff;

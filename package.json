@@ -1,8 +1,8 @@
 {
   "name": "@hexlet/code",
-  "version": "1.0.0",
+  "version": "2.5.9",
   "type": "module",
-  "description": "[![Actions Status](https://github.com/nmanuilova/backend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/nmanuilova/backend-project-46/actions)",
+  "description": "project by Hexlet",
   "main": "src/index.js",
   "scripts": {
     "test": "npx jest"
@@ -10,16 +10,18 @@
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
-  "author": "",
+  "author": "OwlBob",
   "license": "ISC",
-  "devDependencies": {
-    "@eslint/js": "^8.57.0",
-    "commander": "^12.1.0",
-    "eslint": "^8.57.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.29.1",
-    "globals": "^15.8.0",
-    "jest": "^29.7.0",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.43.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jest": "^27.2.2",
+    "jest": "^29.5.0"
   }
 }
