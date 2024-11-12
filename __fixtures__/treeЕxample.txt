@@ -1,0 +1,116 @@
+tree: [
+  {
+    "key": "common",
+    "type": "nested",
+    "value": [
+      {
+        "key": "follow",
+        "value": false,
+        "type": "added"
+      },
+      {
+        "key": "setting1",
+        "type": "unchanged",
+        "value": "Value 1"
+      },
+      {
+        "key": "setting2",
+        "value": 200,
+        "type": "deleted"
+      },
+      {
+        "key": "setting3",
+        "value": true,
+        "value2": null,
+        "type": "changed"
+      },
+      {
+        "key": "setting4",
+        "value": "blah blah",
+        "type": "added"
+      },
+      {
+        "key": "setting5",
+        "value": {
+          "key5": "value5"
+        },
+        "type": "added"
+      },
+      {
+        "key": "setting6",
+        "type": "nested",
+        "value": [
+          {
+            "key": "doge",
+            "type": "nested",
+            "value": [
+              {
+                "key": "wow",
+                "value": "",
+                "value2": "so much",
+                "type": "changed"
+              }
+            ]
+          },
+          {
+            "key": "key",
+            "type": "unchanged",
+            "value": "value"
+          },
+          {
+            "key": "ops",
+            "value": "vops",
+            "type": "added"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "key": "group1",
+    "type": "nested",
+    "value": [
+      {
+        "key": "baz",
+        "value": "bas",
+        "value2": "bars",
+        "type": "changed"
+      },
+      {
+        "key": "foo",
+        "type": "unchanged",
+        "value": "bar"
+      },
+      {
+        "key": "nest",
+        "value": {
+          "key": "value"
+        },
+        "value2": "str",
+        "type": "changed"
+      }
+    ]
+  },
+  {
+    "key": "group2",
+    "value": {
+      "abc": 12345,
+      "deep": {
+        "id": 45
+      }
+    },
+    "type": "deleted"
+  },
+  {
+    "key": "group3",
+    "value": {
+      "deep": {
+        "id": {
+          "number": 45
+        }
+      },
+      "fee": 100500
+    },
+    "type": "added"
+  }
+]
